@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-export const createStudentSchema = z
+export const createProjectSchema = z
   .object({
-    title: z.string().trim().min(1).max(32),
+    title: z.string().trim().min(1).max(32), // Hmmmmmm ;D
     field: z.string().trim().min(1).max(32),
     budget: z.number().positive().finite(),
     finalGrade: z.number().positive().finite(),
@@ -13,4 +13,4 @@ export const createStudentSchema = z
   .required()
   .strict()
 
-export type CreateStudentDto = z.infer<typeof createStudentSchema>
+export type CreateProjectDto = z.infer<typeof createProjectSchema>
