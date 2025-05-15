@@ -1,26 +1,35 @@
-import { Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 import { CreateStudentDto } from './dto/create-student.dto'
-import { UpdateStudentDto } from './dto/update-student.dto'
+import { EntityManager } from 'typeorm'
+import { Student } from './entities/student.entity'
 
 @Injectable()
 export class StudentService {
-  create(createStudentDto: CreateStudentDto) {
-    return 'This action adds a new student'
+  constructor(private readonly entityManager: EntityManager) {}
+  async crearEstudiante(createStudentDto: CreateStudentDto) {
+    if (createStudentDto.pga <= 3.2 || createStudentDto.semester < 4) {
+      throw new BadRequestException('No se puede crear el estudiante')
+    }
+    const student = new Student(createStudentDto)
+    return await this.entityManager.save(student)
   }
 
-  findAll() {
-    return `This action returns all student`
-  }
+  async eliminarEstudiante(id: number) {
+    const student = await this.entityManager.findOne(Student, {
+      where: { id: id },
+      relations: {
+        projects: true,
+      },
+    })
 
-  findOne(id: number) {
-    return `This action returns a #${id} student`
-  }
+    if (!student) {
+      throw new BadRequestException('Estudiante no existe')
+    }
 
-  update(id: number, updateStudentDto: UpdateStudentDto) {
-    return `This action updates a #${id} student`
-  }
+    if (student.projects.length == 0) {
+      throw new BadRequestException('El estudiante tiene proyectos asignados')
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} student`
+    return await this.entityManager.remove(student)
   }
 }
