@@ -1,26 +1,16 @@
 import { Injectable } from '@nestjs/common'
 import { CreateProjectDto } from './dto/create-project.dto'
-import { UpdateProjectDto } from './dto/update-project.dto'
+import { EntityManager } from 'typeorm'
 
 @Injectable()
 export class ProjectService {
-  create(createProjectDto: CreateProjectDto) {
-    return 'This action adds a new project'
-  }
+  constructor(private readonly entityManager: EntityManager) {}
 
-  findAll() {
-    return `This action returns all project`
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} project`
-  }
-
-  update(id: number, updateProjectDto: UpdateProjectDto) {
-    return `This action updates a #${id} project`
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} project`
+  async crearProyecto(createProfessorDto: CreateProjectDto) {
+    if (createProfessorDto.extension.toString().length != 5) {
+      throw new BadRequestException('Extension debe tener 5 digitos')
+    }
+    const professor = new Professor(createProfessorDto)
+    return await this.entityManager.save(professor)
   }
 }

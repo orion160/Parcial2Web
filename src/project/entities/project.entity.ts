@@ -21,7 +21,7 @@ export class Project {
   @Column()
   budget!: number
   @Column()
-  finalGradde!: number
+  finalGrade!: number
   @Column()
   state!: number
   @Column()
