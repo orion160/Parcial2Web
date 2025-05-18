@@ -6,7 +6,7 @@ export class EvaluationController {
   constructor(private readonly evaluationService: EvaluationService) {}
 
   @Post()
-  create() {
+  async crearEvaluacion() {
     return this.evaluationService.crearEvaluacion()
   }
 }
