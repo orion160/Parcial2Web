@@ -35,8 +35,8 @@ export class ProfessorService {
     }
 
     const evaluation = new Evaluation({})
-    // this.entityManager.save(evaluation)
+    await this.entityManager.save(evaluation)
     evaluation.professor = professor
-    await this.entityManager.save(professor)
+    return await this.entityManager.save(professor)
   }
 }

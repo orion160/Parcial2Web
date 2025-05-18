@@ -26,7 +26,7 @@ export class StudentService {
       throw new BadRequestException('Estudiante no existe')
     }
 
-    if (student.projects.length == 0) {
+    if (student.projects.length != 0) {
       throw new BadRequestException('El estudiante tiene proyectos asignados')
     }
 
