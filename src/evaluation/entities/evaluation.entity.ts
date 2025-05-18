@@ -1,5 +1,5 @@
-import { Professor } from 'src/professor/entities/professor.entity'
-import { Project } from 'src/project/entities/project.entity'
+import { Professor } from '../../professor/entities/professor.entity'
+import { Project } from '../../project/entities/project.entity'
 import { Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
 
 @Entity()

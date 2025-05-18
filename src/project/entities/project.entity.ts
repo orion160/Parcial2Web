@@ -1,6 +1,6 @@
-import { Evaluation } from 'src/evaluation/entities/evaluation.entity'
-import { Professor } from 'src/professor/entities/professor.entity'
-import { Student } from 'src/student/entities/student.entity'
+import { Evaluation } from '../../evaluation/entities/evaluation.entity'
+import { Professor } from '../../professor/entities/professor.entity'
+import { Student } from '../../student/entities/student.entity'
 import {
   Column,
   Entity,

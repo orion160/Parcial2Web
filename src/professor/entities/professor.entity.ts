@@ -1,5 +1,5 @@
-import { Evaluation } from 'src/evaluation/entities/evaluation.entity'
-import { Project } from 'src/project/entities/project.entity'
+import { Evaluation } from '../../evaluation/entities/evaluation.entity'
+import { Project } from '../../project/entities/project.entity'
 import {
   Column,
   Entity,
