@@ -9,8 +9,8 @@ services:
       - 5432
     healthcheck:
       test: pg_isready -U postgres -d postgres
-      start_period: 10s
-      start_interval: 10s
+      start_period: 5s
+      start_interval: 5s
       interval: 10s
       timeout: 10s
       retries: 5

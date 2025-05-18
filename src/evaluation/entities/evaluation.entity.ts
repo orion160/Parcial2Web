@@ -1,6 +1,11 @@
 import { Professor } from '../../professor/entities/professor.entity'
 import { Project } from '../../project/entities/project.entity'
-import { Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
+import {
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  type Relation,
+} from 'typeorm'
 
 @Entity()
 export class Evaluation {
