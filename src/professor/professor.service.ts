@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common'
 import { CreateProfessorDto } from './dto/create-professor.dto'
 import { EntityManager } from 'typeorm'
 import { Professor } from './entities/professor.entity'
-import { Evaluation } from 'src/evaluation/entities/evaluation.entity'
+import { Evaluation } from '../evaluation/entities/evaluation.entity'
 
 @Injectable()
 export class ProfessorService {
